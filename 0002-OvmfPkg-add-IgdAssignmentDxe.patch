@@ -686,10 +686,10 @@ diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
 index b80710fbdca4..565e0573b24d 100644
 --- a/OvmfPkg/OvmfPkgX64.dsc
 +++ b/OvmfPkg/OvmfPkgX64.dsc
-@@ -783,6 +783,7 @@
-   OvmfPkg/XenIoPciDxe/XenIoPciDxe.inf
-   OvmfPkg/XenBusDxe/XenBusDxe.inf
-   OvmfPkg/XenPvBlkDxe/XenPvBlkDxe.inf
+@@ -892,6 +892,7 @@
+   OvmfPkg/VirtioScsiDxe/VirtioScsi.inf
+   OvmfPkg/VirtioRngDxe/VirtioRng.inf
+   OvmfPkg/VirtioSerialDxe/VirtioSerial.inf
 +  OvmfPkg/IgdAssignmentDxe/IgdAssignment.inf
  !if $(PVSCSI_ENABLE) == TRUE
    OvmfPkg/PvScsiDxe/PvScsiDxe.inf
@@ -698,10 +698,10 @@ diff --git a/OvmfPkg/OvmfPkgX64.fdf b/OvmfPkg/OvmfPkgX64.fdf
 index 8da59037e5f0..00098b18d911 100644
 --- a/OvmfPkg/OvmfPkgX64.fdf
 +++ b/OvmfPkg/OvmfPkgX64.fdf
-@@ -240,6 +240,7 @@ INF  OvmfPkg/VirtioRngDxe/VirtioRng.inf
- INF  OvmfPkg/XenIoPciDxe/XenIoPciDxe.inf
- INF  OvmfPkg/XenBusDxe/XenBusDxe.inf
- INF  OvmfPkg/XenPvBlkDxe/XenPvBlkDxe.inf
+@@ -265,6 +265,7 @@ INF  OvmfPkg/VirtioRngDxe/VirtioRng.inf
+ INF  OvmfPkg/VirtioScsiDxe/VirtioScsi.inf
+ INF  OvmfPkg/VirtioRngDxe/VirtioRng.inf
+ INF  OvmfPkg/VirtioSerialDxe/VirtioSerial.inf
 +INF  OvmfPkg/IgdAssignmentDxe/IgdAssignment.inf
  !if $(PVSCSI_ENABLE) == TRUE
  INF  OvmfPkg/PvScsiDxe/PvScsiDxe.inf

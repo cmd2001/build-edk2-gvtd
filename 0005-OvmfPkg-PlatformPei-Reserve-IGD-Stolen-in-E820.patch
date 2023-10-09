@@ -14,7 +14,7 @@ diff --git a/OvmfPkg/PlatformPei/Platform.c b/OvmfPkg/PlatformPei/Platform.c
 index 96468701e3b8..4a883e965b17 100644
 --- a/OvmfPkg/PlatformPei/Platform.c
 +++ b/OvmfPkg/PlatformPei/Platform.c
-@@ -457,6 +457,50 @@ ReserveEmuVariableNvStore (
+@@ -230,6 +230,51 @@
    ASSERT_RETURN_ERROR (PcdStatus);
  }
  
@@ -62,18 +62,19 @@ index 96468701e3b8..4a883e965b17 100644
 +    }
 +  }
 +}
- 
++
+ STATIC
  VOID
- DebugDumpCmos (
-@@ -705,6 +749,8 @@ InitializePlatform (
+ Q35BoardVerification (
+@@ -317,6 +317,8 @@
  
-   XenDetect ();
+   PlatformDebugDumpCmos ();
  
 +  ReserveIgdStolen ();
 +
    if (QemuFwCfgS3Enabled ()) {
      DEBUG ((DEBUG_INFO, "S3 support was detected on QEMU\n"));
-     mS3Supported = TRUE;
+     PlatformInfoHob->S3Supported = TRUE;
 -- 
 2.31.1
 
