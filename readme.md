@@ -9,8 +9,8 @@ Build EDK2 with Intel GVT-D Support
 
 ## Usage
 ```shell
-git clone git@github.com:cmd2001/Onekey-GVTd.git
-cd Onekey-GVTd
+git clone git@github.com:cmd2001/build-edk2-gvtd.git
+cd build-edk2-gvtd
 sh ./init_edk2.sh
 cp <intel gop driver efi> gop/IntelGopDriver.efi
 sudo sh ./build_ovmf.sh
