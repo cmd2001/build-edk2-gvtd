@@ -32,7 +32,7 @@ Then edit the configuration file of your VM, now you can boot your VM with integ
 
 **REMINDER: OS Type must be set to Linux and CPU Type must be set to HOST, otherwise the Windows guest system will not work after installing the driver from Intel.**
 
-### Using customized edk2 firmware and OpROM
+### Using customized edk2 firmware and OpROM (Recommended, with better capability and higher success rate)
 
 ```ini
 args: -set device.hostpci0.addr=02.0 -set device.hostpci0.x-igd-gms=6 -set device.hostpci0.x-igd-opregion=on
@@ -41,7 +41,7 @@ hostpci0: 0000:00:02,legacy-igd=1,romfile=XXX_GOP.rom
 
 `XXX_GOP.rom` should be placed in `/usr/share/kvm/`.
 
-### Using Only OpRom
+### Using Only OpRom (Easier, may only be capable with recent CPUs starting from 11th Gen)
 
 ```ini
 args: -set device.hostpci0.addr=02.0 -set device.hostpci0.x-igd-gms=6 -set device.hostpci0.x-igd-opregion=on
@@ -52,7 +52,7 @@ hostpci0: 0000:00:02,legacy-igd=1,romfile=XXX.rom
 
 **Due to loading order of efis in OVMF image during QEMU-KVM runtime, this method (the method using only OpROM) may lead to a blurry screen, or just prevent screen from lighting up. In this case, please switch to previous method.**
 
-To dig deeper into this issue, it is caused by reserving stolen memory for iGPU at inappropriate place. As PVE tend to add OpRom used in the vm configuration to the tail of its own OVMF_CODE image, the `IgdAssignmentDxe.efi` from our OpRom, which reserves stolen memory region for iGPU, is executed after all `xxxDxe.efi`s from `OVMF_CODE`, which is different from what happens when booting a real(physical) machine with iGPU.
+To dig deeper into this issue, it is caused by reserving stolen memory for iGPU at inappropriate address. As PVE tend to add OpRom used in the vm configuration to the tail of its own OVMF_CODE image, the `IgdAssignmentDxe.efi` from our OpRom, which reserves stolen memory region for iGPU, is executed after all `xxxDxe.efi`s from `OVMF_CODE`, which is different from what happens when booting a real(physical) machine with iGPU.
 
 In this case, as some `xxxDxe.efi`s from `OVMF_CODE` may also allocate memory region for other virtual devices, the stolen memory reserved for iGPU may be allocated behind the address its expected to be, causing iGPU use inappropriate memory region(the memory region allocated for other devices) and a blurry or black screen.
 
