@@ -3,6 +3,7 @@ docker_image_name="ubuntu:ovmf.22.04"
 tmp_dir="./build_gop_tmp"
 product_dir="./product"
 product_filename="B660.rom"
+product_goponly_filename="B660_GOP.rom"
 
 if [ ! -d "${gop_bin_dir}" ]; then
     mkdir ${gop_bin_dir}
@@ -42,5 +43,15 @@ docker run \
     ${docker_image_name} \
     /bin/bash -c "source edksetup.sh && cd ../${tmp_dir} && pwd && EfiRom -f 0x8086 -i 0xffff -e ./IntelGopDriver.efi ./IgdAssignmentDxe.efi ./PlatformGOPPolicy.efi -o ${product_filename}"
 cp ${tmp_dir}/${product_filename} ${product_dir}/${product_filename} 
+
+docker run \
+    -ti \
+    --rm \
+    -w $PWD/edk2 \
+    -v $PWD:$PWD \
+    --security-opt label=disable \
+    ${docker_image_name} \
+    /bin/bash -c "source edksetup.sh && cd ../${tmp_dir} && pwd && EfiRom -f 0x8086 -i 0xffff -e ./IntelGopDriver.efi -o ${product_goponly_filename}"
+cp ${tmp_dir}/${product_goponly_filename} ${product_dir}/${product_goponly_filename} 
 
 rm -r ${tmp_dir}
