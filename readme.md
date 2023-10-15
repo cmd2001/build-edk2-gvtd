@@ -16,8 +16,8 @@ git clone git@github.com:cmd2001/build-edk2-gvtd.git
 cd build-edk2-gvtd
 sh ./init_edk2.sh
 cp <intel gop driver efi> gop/IntelGopDriver.efi
-sudo sh ./build_ovmf.sh
-sudo sh ./build_oprom.sh
+sudo bash ./build_ovmf.sh
+sudo bash ./build_oprom.sh
 ```
 
 Now you have `OVMF_CODE_4MB.fd`, `OVMF_CODE_4MB.secboot.fd` and `XXX.rom`, `XXX_GOP.rom` in `./product`. (where `XXX.rom`, `XXX_GOP.rom` is `B660.rom`, `B660_GOP.rom` as default)
