@@ -6,7 +6,8 @@ Build EDK2 with Intel GVT-D Support
 
 - Intel Core 13900T ES Q0PV (AlderLake, Asrock Deskmini B660, PVE 8.0.4, Win11 23H2)
 - Intel Intel N100 (AlderLake-N, GMKtec NucBox G3, PVE 8.0.4, Win11 23H2)
-Test reports on different platforms are welcomed, feel free to open new issues.
+
+**Test reports on different platforms are welcomed, feel free to open new issues.**
 
 ## Prerequisites
 
